@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 */
-app.use(express.static("public"));
+app.use(express.static("Public"));
 app.use(express.urlencoded({ extended: true }));
 app.get("/students", (req, res) => {
     var courseNum = req.query.course;
