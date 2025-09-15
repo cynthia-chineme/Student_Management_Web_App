@@ -1,4 +1,4 @@
-# WEB700 Student & Course Management App
+# Student & Course Management App
 
 ## Overview
 
@@ -59,8 +59,4 @@ This repository demonstrates key competencies in full-stack web development, foc
 - JavaScript (ES6)
 - JSON for data storage
 
-## Author
-**Cynthia Chineme**  
-Student ID: 130116239  
-Business Information Technology, Seneca Polytechnic
 
