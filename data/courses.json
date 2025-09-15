@@ -53,5 +53,10 @@
         "courseId": 11,
         "courseCode": "WTP100",
         "courseDescription": "Work Term Preparation (Work-Integrated Learning option only)"
+    },
+    {
+        "courseId": 12,
+        "courseCode": "WTP170",
+        "courseDescription": "Work Based Communication (Work-Integrated Learning option only)"
     }
 ]
