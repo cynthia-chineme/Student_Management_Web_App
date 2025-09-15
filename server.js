@@ -1,19 +1,9 @@
-/*
-*  WEB700 – Assignment 03
-*  I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part 
-*  of this assignment has been copied manually or electronically from any other source 
-*  (including 3rd party web sites) or distributed to other students.
-* 
-*  Name: __CYNTHIA CHINEME____________________ Student ID: __130116239____________ Date: _________14-06-2024_______
-*
-********************************************************************************/ 
-
-
-var HTTP_PORT = process.env.PORT || 8080;
-var path = require("path");
-var express = require("express");
-var app = express();
-var collegeStudentData = require('./modules/collegeData');
+// Set up required modules and constants
+var HTTP_PORT = process.env.PORT || 8080; // Port for server
+var path = require("path"); // Path utility
+var express = require("express"); // Express framework
+var app = express(); // Express app instance
+var collegeStudentData = require('./modules/collegeData'); // Data module
 
 
 // setup a 'route' to listen on the default url path
@@ -22,91 +12,83 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 */
+// Middleware for serving static files and parsing form data
 app.use(express.static("Public"));
 app.use(express.urlencoded({ extended: true }));
+// Route: Get all students or filter by course
 app.get("/students", (req, res) => {
     var courseNum = req.query.course;
-
-    if (courseNum == undefined ){
+    if (courseNum == undefined) {
+        // Return all students
         collegeStudentData.getAllStudents()
-        .then((resolve_response) => { res.json(resolve_response)})
-        .catch(()=>{
-            res.json({'message' : 'no results'});
-        });
-        
+            .then((resolve_response) => { res.json(resolve_response) })
+            .catch(() => {
+                res.json({ 'message': 'no results' });
+            });
     }
-    else{
+    else {
+        // Return students by course
         collegeStudentData.getStudentsByCourse(courseNum)
-        .then((resolve_response) => {res.json(resolve_response)})
-        .catch(()=>{
-            res.json({'message' : 'no results'});
-        });
+            .then((resolve_response) => { res.json(resolve_response) })
+            .catch(() => {
+                res.json({ 'message': 'no results' });
+            });
     }
-/*
-    collegeStudentData.initialize()
-    .then(
-        ()=>(collegeStudentData.getAllStudents())
-    ).then((resolve_response) => { res.json(resolve_response)})
-    .catch(()=>{
-        res.json({'message' : 'no results'});
-    }) 
-
-
-/*/
 });
+// Route: Get all teaching assistants
 app.get("/tas", (req, res) => {
-   collegeStudentData.getTAs()
-    .then((resolve_response) => {res.json(resolve_response)})
-    .catch(()=>{
-        res.json({'message' : 'no results'});
-    })
+    collegeStudentData.getTAs()
+        .then((resolve_response) => { res.json(resolve_response) })
+        .catch(() => {
+            res.json({ 'message': 'no results' });
+        })
 });
+// Route: Get all courses
 app.get("/courses", (req, res) => {
     collegeStudentData.getCourses()
-    .then((resolve_response) => {res.json(resolve_response)})
-    .catch(()=>{
-        res.json({'message' : 'no results'});
-    })
+        .then((resolve_response) => { res.json(resolve_response) })
+        .catch(() => {
+            res.json({ 'message': 'no results' });
+        })
 });
+// Route: Get a single student by student number
 app.get("/student/:num", (req, res) => {
-    var studentNo = req.params.num;
-    collegeStudentData.getStudentByNum(studentNo)
-    .then((resolve_response) => {res.json(resolve_response)})
-  .catch(()=>{
-    res.json({'message' : 'no results'});
-  })
+        var studentNo = req.params.num;
+        collegeStudentData.getStudentByNum(studentNo)
+                .then((resolve_response) => { res.json(resolve_response) })
+                .catch(() => {
+                        res.json({ 'message': 'no results' });
+                })
 });
+// Static view routes
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname,"/views/home.html"))
+    res.sendFile(path.join(__dirname, "/views/home.html"))
 });
 app.get("/about", (req, res) => {
-    res.sendFile(path.join(__dirname,"/views/about.html"));
+    res.sendFile(path.join(__dirname, "/views/about.html"));
 });
 app.get("/htmlDemo", (req, res) => {
-    res.sendFile(path.join(__dirname,"/views/htmlDemo.html"));
+    res.sendFile(path.join(__dirname, "/views/htmlDemo.html"));
 });
 app.get("/students/add", (req, res) => {
-    res.sendFile(path.join(__dirname,"/views/addstudent.html"));
+    res.sendFile(path.join(__dirname, "/views/addstudent.html"));
 });
- // Using Post route to process the form 
- app.post("/students/add", (req, res) => {
-    collegeStudentData.addStudent(req.body) 
-    .then(
-        () => res.redirect('/students')
-    )
+// Route: Add a new student via form submission
+app.post("/students/add", (req, res) => {
+    collegeStudentData.addStudent(req.body)
+        .then(() => res.redirect('/students'))
 });
 
-app.use( (req, res) => {
-    //res.status(404).send("404");
-    res.sendFile(path.join(__dirname,"/views/404.html"));
+// Catch-all route for 404 errors
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname, "/views/404.html"));
 });
-// setup http server to listen on HTTP_PORT
-//app.listen(HTTP_PORT, ()=>{console.log("server listening on port: " + HTTP_PORT)});
 
+// Initialize data and start server
 collegeStudentData.initialize()
-.then(
-    ()=>(app.listen(HTTP_PORT, ()=>{console.log("server listening on port: " + HTTP_PORT)}))
-)
-.catch((err)=>{
-    console.log(err)
-})
+    .then(() => (
+        app.listen(HTTP_PORT, () => { console.log("server listening on port: " + HTTP_PORT) })
+    ))
+    .catch((err) => {
+        console.log(err)
+    })
