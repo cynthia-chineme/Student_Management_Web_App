@@ -1,61 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Ga+Maamli&display=swap');
-.bg-light{
-    box-shadow: 1px 1px gold;
-    background-image: linear-gradient(to bottom right, rgb(102 174 197), rgb(7 9 9));
-}
-.navbar-light .navbar-brand,.navbar-brand{
-    text-shadow: 0.5px 0.5px #070706;
-    color: rgb(255, 0, 60);
+table {
+tbody tr th{
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:wght@400;700&family=Ga+Maamli:wght@400;700&display=swap');
 
-    font-family: "Bodoni Moda SC", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+body {
+    background: linear-gradient(120deg, #c1eef2 0%, #f1e2d2 100%);
+    min-height: 100vh;
+    font-family: 'Ga Maamli', Arial, sans-serif;
+}
+
+.bg-light {
+    background: linear-gradient(90deg, #66aec5 0%, #070909 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.navbar-light .navbar-brand, .navbar-brand {
+    color: #ff003c !important;
+    font-family: 'Bodoni Moda SC', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #07070633;
 }
 
 .navbar-nav a {
-    font-family: "Ga Maamli", sans-serif;
+    font-family: 'Ga Maamli', sans-serif;
     font-weight: 400;
-    font-style: normal;
+    font-size: 1.08rem;
+    transition: color 0.2s;
 }
-.navbar-light .navbar-nav .nav-link:hover{
-    color: #ff0000;
-}
-.navbar-light .navbar-nav .active .nav-link{
-    color: #eefaf8;
-}
-body {
-    background-image: linear-gradient(to bottom right, rgb(193, 238, 242), rgb(241, 226, 210));
-    background-image: url('https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    background-size: cover;
-    background-repeat: no-repeat;
-
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .active .nav-link {
+    color: #ff003c !important;
 }
 
 main {
-    background-color: #00000085;
+    background: rgba(0,0,0,0.7);
     margin-top: 3.5em;
     margin-bottom: 3.5em;
     color: gold;
+    border-radius: 1.2em;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    padding: 2em 2em 2em 2em;
 }
 
 table {
-    border: 2px solid rgb(255, 0, 0);
+    border: 2px solid #ff003c;
+    background: #fff8f0;
+    border-radius: 0.5em;
+    overflow: hidden;
 }
-tbody tr th{
+tbody tr th {
     background-color: #f5faee;
 }
 
 form {
-    margin-top: 70px;
+    margin-top: 2em;
     width: 90%;
+    background: #fff8f0cc;
+    padding: 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
 fieldset {
-    border: 2px dotted rgb(214, 89, 11);
+    border: 2px dotted #d6590b;
     padding: 10px;
     border-radius: 10px;
     margin: 10px;
+}
+
+.footer {
+    background: #070909;
+    color: #f1e2d2;
+    font-family: 'Ga Maamli', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    border-top: 2px solid #ff003c;
+    margin-top: 3em;
+    padding: 1.2em 0;
 }
 
 legend {

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Management Web App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/theme.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container py-5">
+      <main class="col-md-12">
+        <section class="mb-5">
+          <h1 class="display-4 mb-3">Student Management Web App</h1>
+          <p class="lead">A modern, full-featured web application for managing students, teaching assistants, and courses. Built with Node.js, Express, and EJS, this app demonstrates professional web development best practices, dynamic data handling, and a clean, responsive UI.</p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">✔️ Add, view, and manage students and teaching assistants</li>
+            <li class="list-group-item">✔️ Browse and manage course offerings</li>
+            <li class="list-group-item">✔️ Professional, portfolio-ready code and design</li>
+            <li class="list-group-item">✔️ Built for extensibility and real-world use</li>
+          </ul>
+        </section>
+        <section class="mb-5">
+          <h2 class="h4">Student Highlights</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover bg-white">
+              <thead class="thead-light">
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Course</th>
+                  <th>TA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% students.slice(0, 3).forEach(function(student, idx) { %>
+                  <tr>
+                    <td><%= idx + 1 %></td>
+                    <td><%= student.firstName %> <%= student.lastName %></td>
+                    <td><%= student.email %></td>
+                    <td><%= student.course %></td>
+                    <td><%= student.TA ? 'Yes' : 'No' %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+            <a href="/students" class="btn btn-outline-primary">View All Students</a>
+          </div>
+        </section>
+        <section class="mb-5">
+          <h2 class="h4">Teaching Assistant Highlights</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover bg-white">
+              <thead class="thead-light">
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Course</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% tas.slice(0, 3).forEach(function(ta, idx) { %>
+                  <tr>
+                    <td><%= idx + 1 %></td>
+                    <td><%= ta.firstName %> <%= ta.lastName %></td>
+                    <td><%= ta.email %></td>
+                    <td><%= ta.course %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+            <a href="/tas" class="btn btn-outline-primary">View All TAs</a>
+          </div>
+        </section>
+        <section>
+          <h2 class="h4">Course Catalog Preview</h2>
+          <% if (courses.length === 0) { %>
+            <div class="alert alert-warning mt-4">No courses are currently available. Please check back later or contact the administrator to add new courses.</div>
+          <% } else { %>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover bg-white">
+              <thead class="thead-light">
+                <tr>
+                  <th>#</th>
+                  <th>Course Code</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% courses.slice(0, 3).forEach(function(course, idx) { %>
+                  <tr>
+                    <td><%= idx + 1 %></td>
+                    <td><%= course.courseCode %></td>
+                    <td><%= course.courseDescription %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+            <a href="/courses" class="btn btn-outline-primary">View All Courses</a>
+          </div>
+          <% } %>
+        </section>
+      </main>
+    </div>
+    <%- include('partials/footer') %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>

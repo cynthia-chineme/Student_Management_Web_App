@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teaching Assistants | Student Management Web App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/theme.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container">
+      <main class="col-md-12">
+        <h1 class="mt-4 mb-4">Teaching Assistants</h1>
+        <p class="lead">Meet our dedicated Teaching Assistants (TAs) who support both students and faculty, ensuring a high-quality learning experience. Each TA brings unique skills and expertise to the academic environment.</p>
+        <table class="table table-striped table-hover table-bordered bg-white">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Course</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% tas.forEach(function(ta, idx) { %>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= ta.firstName %> <%= ta.lastName %></td>
+                <td><%= ta.email %></td>
+                <td>
+                  <% let course = courses && courses.find(c => c.courseId == ta.course); %>
+                  <%= course ? course.courseCode : ta.course %>
+                </td>
+                <td><%= ta.addressStreet %>, <%= ta.addressCity %>, <%= ta.addressProvince %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Students | Student Management Web App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/theme.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container">
+      <main class="col-md-12">
+        <h1 class="mt-4 mb-4">Student Directory</h1>
+        <p class="lead">Explore a comprehensive list of all registered students, including their academic and contact details. Use this directory to connect, collaborate, or manage student information efficiently.</p>
+        <table class="table table-striped table-hover table-bordered bg-white">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Course</th>
+              <th>TA</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% students.forEach(function(student, idx) { %>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= student.firstName %> <%= student.lastName %></td>
+                <td><%= student.email %></td>
+                <td>
+                  <% let course = courses && courses.find(c => c.courseId == student.course); %>
+                  <%= course ? course.courseCode : student.course %>
+                </td>
+                <td><%= student.TA ? 'Yes' : 'No' %></td>
+                <td><%= student.addressStreet %>, <%= student.addressCity %>, <%= student.addressProvince %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>

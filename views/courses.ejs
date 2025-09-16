@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Courses | Student Management Web App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/theme.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container">
+      <main class="col-md-12">
+        <h1 class="mt-4 mb-4">Course Catalog</h1>
+        <p class="lead">Browse our diverse course offerings, each designed to foster academic excellence and professional growth. Click on a course for more information or to see enrolled students.</p>
+        <% if (courses.length === 0) { %>
+          <div class="alert alert-warning mt-4">No courses are currently available. Please check back later or contact the administrator to add new courses.</div>
+        <% } else { %>
+        <table class="table table-striped table-hover table-bordered bg-white">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Course Code</th>
+              <th>Description</th>
+              <th>Students</th>
+              <th>Teaching Assistants</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% courses.forEach(function(course, idx) { %>
+              <tr>
+                <td><%= idx + 1 %></td>
+                <td><%= course.courseCode %></td>
+                <td><%= course.courseDescription %></td>
+                <td><%= (students.filter(s => s.course == course.courseId).length) %></td>
+                <td><%= (tas.filter(t => t.course == course.courseId).length) %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% } %>
+      </main>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>

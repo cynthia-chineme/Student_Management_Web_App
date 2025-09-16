@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Management Web App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/theme.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container">
+      <div class="row">
+        <main class="col-md-12">
+          <form method="post" action="/students/add">
+            <fieldset>
+              <legend>Personal Information</legend>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>First Name:</label>
+                    <input class="form-control" name="firstName" type="text" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Last Name:</label>
+                    <input class="form-control" name="lastName" type="text"  />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Email:</label>
+                    <input class="form-control" name="email" type="email" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Address (Street):</label>
+                    <input class="form-control" name="addressStreet" type="text" />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Address (City):</label>
+                    <input class="form-control" name="addressCity" type="text" />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Address (Province):</label>
+                    <input class="form-control" name="addressProvince" type="text" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Course:</label>
+                    <input class="form-control" name="course" type="text" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>TA:</label>
+                    <input class="form-check-input" name="TA" type="checkbox" />
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Student</button>
+            </fieldset>
+          </form>
+        </main>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>
