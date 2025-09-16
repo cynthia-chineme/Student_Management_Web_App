@@ -27,7 +27,7 @@
             <% students.forEach(function(student, idx) { %>
               <tr>
                 <td><%= idx + 1 %></td>
-                <td><%= student.firstName %> <%= student.lastName %></td>
+                <td><a href="/students/<%= student.studentNum %>"><%= student.firstName %> <%= student.lastName %></a></td>
                 <td><%= student.email %></td>
                 <td>
                   <% let course = courses && courses.find(c => c.courseId == student.course); %>

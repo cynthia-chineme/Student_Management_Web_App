@@ -29,7 +29,7 @@
             <% courses.forEach(function(course, idx) { %>
               <tr>
                 <td><%= idx + 1 %></td>
-                <td><%= course.courseCode %></td>
+                <td><a href="/courses/<%= course.courseId %>"><%= course.courseCode %></a></td>
                 <td><%= course.courseDescription %></td>
                 <td><%= (students.filter(s => s.course == course.courseId).length) %></td>
                 <td><%= (tas.filter(t => t.course == course.courseId).length) %></td>

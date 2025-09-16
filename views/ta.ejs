@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teaching Assistant Details | Student Management Web App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/theme.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container py-4">
+      <main class="col-md-10 offset-md-1">
+        <h1 class="mb-4">Teaching Assistant Details</h1>
+        <% if (!ta) { %>
+          <div class="alert alert-danger">Teaching Assistant not found.</div>
+        <% } else { %>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title"><%= ta.firstName %> <%= ta.lastName %></h4>
+              <p class="card-text"><strong>Email:</strong> <%= ta.email %></p>
+              <p class="card-text"><strong>Address:</strong> <%= ta.addressStreet %>, <%= ta.addressCity %>, <%= ta.addressProvince %></p>
+              <p class="card-text"><strong>Status:</strong> <%= ta.status %></p>
+              <p class="card-text"><strong>Enrolled Course:</strong> 
+                <% let course = courses && courses.find(c => c.courseId == ta.course); %>
+                <a href="/courses/<%= ta.course %>"><%= course ? course.courseCode + ' - ' + course.courseDescription : ta.course %></a>
+              </p>
+            </div>
+          </div>
+        <% } %>
+        <a href="/tas" class="btn btn-secondary">Back to TAs</a>
+      </main>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>

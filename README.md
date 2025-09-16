@@ -1,45 +1,38 @@
-# Student & Course Management App
+# Student Management Web App
 
 ## Overview
 
-This repository demonstrates key competencies in full-stack web development, focusing on building a RESTful API and dynamic web application for managing students and courses. The project is designed for educational purposes and showcases proficiency in Node.js, Express, data handling, and front-end integration.
+A modern, full-featured web application for managing students, teaching assistants, and courses. Built with Node.js, Express, and EJS, this app demonstrates professional web development best practices, dynamic data handling, and a clean, responsive UI. Ideal for portfolio demonstration and real-world use.
 
-## Core Frameworks
+## Features
+- Add, view, and manage students and teaching assistants (TAs)
+- Browse and manage course offerings
+- Correlate students, TAs, and courses for rich data insights
+- Professional, portfolio-ready code and design
+- Built for extensibility and real-world use
 
-### 1. **Node.js & Express Server Development**
-- Built a robust Express.js server (`server.js`) to handle HTTP requests and serve static and dynamic content.
-- Implemented RESTful API endpoints for CRUD operations on student and course data.
-- Utilized middleware for static file serving and form data parsing.
+## Core Technologies
+- **Node.js & Express.js**: Robust server and routing
+- **EJS Templates**: Dynamic HTML rendering with partials for header/footer
+- **Bootstrap & Custom CSS**: Responsive, modern UI
+- **JSON**: Data storage for students and courses
 
-### 2. **Data Management & Asynchronous Programming**
-- Designed a modular data layer (`modules/collegeData.js`) using Promises for asynchronous file I/O.
-- Managed student and course data with JSON files (`data/students.json`, `data/courses.json`).
-- Implemented functions to:
-  - Retrieve all students, TAs, and courses
-  - Filter students by course
-  - Add new students
-  - Fetch individual student records
+## Key Routes & Functionality
+- `/` – Home page with app details and live data snippets
+- `/students` – List all students (with course names)
+- `/tas` – List all teaching assistants (with course names)
+- `/courses` – List all courses, with student/TA counts per course
+- `/students/add` – Add a new student (form)
+- `/tas/add` – Add a new teaching assistant (form)
+- `/student/:num` – Get details for a specific student (JSON)
 
-### 3. **Front-End Integration & Routing**
-- Developed multiple HTML views (`views/`) for Home, About, Add Student, and Demo pages.
-- Integrated Bootstrap for responsive UI and custom CSS for theming.
-- Connected front-end forms to back-end routes for dynamic data submission and retrieval.
-
-### 4. **RESTful API Design**
-- `/students` – List all students or filter by course
-- `/student/:num` – Get details for a specific student
-- `/tas` – List all teaching assistants
-- `/courses` – List all courses
-- `/students/add` – Add a new student (form submission)
-
-### 5. **Error Handling & User Experience**
-- Implemented graceful error handling for missing data and invalid routes (custom 404 page).
-- Provided clear user feedback for empty results and form submissions.
-
-### 6. **Project Structure & Best Practices**
-- Organized code into logical modules and folders for scalability and maintainability.
-- Used environment variables for port configuration.
-- Documented code and included author information for academic integrity.
+## Project Structure
+- `server.js` – Main Express server, all routes use EJS templates
+- `modules/collegeData.js` – Data access and logic
+- `views/` – EJS templates (no legacy HTML files)
+  - `partials/` – Header and footer partials
+- `data/` – JSON data files for students and courses
+- `Public/CSS/` – Custom theme and Bootstrap overrides
 
 ## How to Run
 1. Install dependencies:
@@ -52,11 +45,24 @@ This repository demonstrates key competencies in full-stack web development, foc
    ```
 3. Open your browser at `http://localhost:8080` (or the port specified in your environment).
 
+## Notes
+- All legacy `.html` files have been removed. The app uses only `.ejs` templates for rendering.
+- The navigation bar is unified for easy access to all features.
+- The Courses page displays student and TA counts per course.
+- The home page provides a live preview of students, TAs, and courses.
+
 ## Technologies Used
 - Node.js
 - Express.js
+- EJS
 - HTML5, CSS3, Bootstrap
 - JavaScript (ES6)
 - JSON for data storage
+
+---
+
+**Author:** Cynthia Chineme
+
+For questions or contributions, please open an issue or submit a pull request.
 
 

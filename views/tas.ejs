@@ -26,7 +26,7 @@
             <% tas.forEach(function(ta, idx) { %>
               <tr>
                 <td><%= idx + 1 %></td>
-                <td><%= ta.firstName %> <%= ta.lastName %></td>
+                <td><a href="/tas/<%= ta.studentNum %>"><%= ta.firstName %> <%= ta.lastName %></a></td>
                 <td><%= ta.email %></td>
                 <td>
                   <% let course = courses && courses.find(c => c.courseId == ta.course); %>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Course Details | Student Management Web App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/theme.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="container py-4">
+      <main class="col-md-10 offset-md-1">
+        <h1 class="mb-4">Course Details</h1>
+        <% if (!course) { %>
+          <div class="alert alert-danger">Course not found.</div>
+        <% } else { %>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title"><%= course.courseCode %> - <%= course.courseDescription %></h4>
+              <p class="card-text"><strong>Course ID:</strong> <%= course.courseId %></p>
+            </div>
+          </div>
+          <h3>Enrolled Students</h3>
+          <% if (students.length === 0) { %>
+            <div class="alert alert-info">No students enrolled in this course.</div>
+          <% } else { %>
+            <ul class="list-group mb-4">
+              <% students.forEach(function(student) { %>
+                <li class="list-group-item">
+                  <a href="/students/<%= student.studentNum %>"><%= student.firstName %> <%= student.lastName %></a> (<%= student.email %>)
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+          <h3>Teaching Assistants</h3>
+          <% if (tas.length === 0) { %>
+            <div class="alert alert-info">No teaching assistants for this course.</div>
+          <% } else { %>
+            <ul class="list-group">
+              <% tas.forEach(function(ta) { %>
+                <li class="list-group-item">
+                  <a href="/tas/<%= ta.studentNum %>"><%= ta.firstName %> <%= ta.lastName %></a> (<%= ta.email %>)
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        <% } %>
+        <a href="/courses" class="btn btn-secondary mt-4">Back to Courses</a>
+      </main>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>
